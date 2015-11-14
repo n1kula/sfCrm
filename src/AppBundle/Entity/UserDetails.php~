@@ -1,0 +1,34 @@
+<?php 
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({
+ *  "agent"   = "UserDetailsAgent",
+ *  "manager" = "UserDetailsManager",
+ *  "client"  = "UserDetailsClient"
+ * })
+ * 
+ * @ORM\Entity()
+ * @ORM\Table(name="user_details")
+ */
+abstract class UserDetails
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name", type="string", length=100)
+     */
+    private $firstName;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", length=100)
+     */
+    private $lastName;
+}
