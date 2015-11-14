@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class UserDetailsManager extends UserDetails
 {
+    const AREA_NORTH = 0;
+    const AREA_SOUTH = 1;
+    const AREA_EAST = 2;
+    const AREA_WEST = 3;
+    
     /**
      * @var decimal
      *
@@ -31,7 +36,19 @@ class UserDetailsManager extends UserDetails
      */
     private $agents;
 
-
+    /**
+     * 
+     */
+    public static function getAreas()
+    {
+       return [
+           self::AREA_NORTH => 'północ',
+           self::AREA_SOUTH => 'południe',
+           self::AREA_EAST => 'wschód',
+           self::AREA_WEST => 'zachód',
+       ];
+    }
+    
     /**
      * Set salary
      *

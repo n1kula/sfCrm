@@ -11,9 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
 class UserDetailsAgent extends UserDetails
 {
     /**
-     * @var decimal
+     * @var integer
      *
-     * @ORM\Column(name="commission", type="decimal", scale=2, precision=10)
+     * @ORM\Column(name="commission", type="integer")
      */
     private $commission;
     
@@ -34,7 +34,7 @@ class UserDetailsAgent extends UserDetails
     /**
      * Set commission
      *
-     * @param decimal $commission
+     * @param integer $commission
      *
      * @return UserDetailsAgent
      */
@@ -48,7 +48,7 @@ class UserDetailsAgent extends UserDetails
     /**
      * Get commission
      *
-     * @return decimal
+     * @return integer
      */
     public function getCommission()
     {
