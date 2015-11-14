@@ -23,6 +23,13 @@ class UserDetailsManager extends UserDetails
      * @ORM\Column(name="area", type="smallint")
      */
     private $area;
+    
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     * 
+     * @ORM\OneToMany(targetEntity="UserDetailsAgent", mappedBy="manager")
+     */
+    private $agents;
 
 
     /**
@@ -73,4 +80,45 @@ class UserDetailsManager extends UserDetails
         return $this->area;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->agents = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add agent
+     *
+     * @param \AppBundle\Entity\UserDetailsAgent $agent
+     *
+     * @return UserDetailsManager
+     */
+    public function addAgent(\AppBundle\Entity\UserDetailsAgent $agent)
+    {
+        $this->agents[] = $agent;
+
+        return $this;
+    }
+
+    /**
+     * Remove agent
+     *
+     * @param \AppBundle\Entity\UserDetailsAgent $agent
+     */
+    public function removeAgent(\AppBundle\Entity\UserDetailsAgent $agent)
+    {
+        $this->agents->removeElement($agent);
+    }
+
+    /**
+     * Get agents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAgents()
+    {
+        return $this->agents;
+    }
 }

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class UserDetailsAgent
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserDetailsAgentRepository")
  */
 class UserDetailsAgent extends UserDetails
 {
@@ -23,6 +23,13 @@ class UserDetailsAgent extends UserDetails
      * @ORM\OneToMany(targetEntity="Agreement", mappedBy="agent")
      */
     private $agreements;
+    
+    /**
+     * @var UserDetailsManager
+     * 
+     * @ORM\ManyToOne(targetEntity="UserDetailsManager", inversedBy="agents")
+     */
+    private $manager;
     
     /**
      * Set commission
@@ -87,5 +94,29 @@ class UserDetailsAgent extends UserDetails
     public function getAgreements()
     {
         return $this->agreements;
+    }
+
+    /**
+     * Set manager
+     *
+     * @param \AppBundle\Entity\UserDetailsManager $manager
+     *
+     * @return UserDetailsAgent
+     */
+    public function setManager(\AppBundle\Entity\UserDetailsManager $manager = null)
+    {
+        $this->manager = $manager;
+
+        return $this;
+    }
+
+    /**
+     * Get manager
+     *
+     * @return \AppBundle\Entity\UserDetailsManager
+     */
+    public function getManager()
+    {
+        return $this->manager;
     }
 }
