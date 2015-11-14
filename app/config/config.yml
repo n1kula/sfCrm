@@ -85,3 +85,8 @@ stof_doctrine_extensions:
         default:
             sluggable: true
             timestampable: true
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\User
