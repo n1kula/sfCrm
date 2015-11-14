@@ -72,5 +72,5 @@ class UserDetailsManager extends UserDetails
     {
         return $this->area;
     }
-}
 
+}

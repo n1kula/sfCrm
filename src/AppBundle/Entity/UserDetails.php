@@ -100,4 +100,5 @@ abstract class UserDetails
     {
         return $this->lastName;
     }
+
 }
