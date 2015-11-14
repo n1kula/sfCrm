@@ -30,7 +30,9 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="hold-transition skin-blue sidebar-mini">
+  
+  <body class="hold-transition {% block additionalClass %}skin-blue sidebar-mini {% endblock %}">
+    {% block main_body %}
     <!-- Site wrapper -->
     <div class="wrapper">
 
@@ -573,7 +575,8 @@
            immediately after the control sidebar -->
       <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
-
+     {% endblock %}
+     
     {% block javascripts %}
         {% javascripts 
             '../app/Resources/public/js/*'        
@@ -586,5 +589,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         
     {% endblock %}
+    
+    
   </body>
+  
+ 
 </html>
