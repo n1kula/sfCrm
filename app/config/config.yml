@@ -35,7 +35,7 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-
+    
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
@@ -106,7 +106,7 @@ oneup_flysystem:
         file_fs:
             adapter: file_adapter
             mount:   file_fs
-            
+
 vich_uploader:
     db_driver: orm
     storage: flysystem
@@ -119,3 +119,7 @@ vich_uploader:
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
+            
+knp_menu:
+    twig:
+        template: knp_menu.html.twig
