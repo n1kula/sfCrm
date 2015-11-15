@@ -54,7 +54,7 @@ abstract class Agreement
     /**
      * @var ArrayCollection
      * 
-     * @ORM\OneToMany(targetEntity="Attachment", mappedBy="agreement")
+     * @ORM\OneToMany(targetEntity="Attachment", mappedBy="agreement", cascade={"persist"})
      */
     private $attachments;
 
@@ -181,6 +181,7 @@ abstract class Agreement
     public function addAttachment(\AppBundle\Entity\Attachment $attachment)
     {
         $this->attachments[] = $attachment;
+        $attachment->setAgreement($this);
 
         return $this;
     }

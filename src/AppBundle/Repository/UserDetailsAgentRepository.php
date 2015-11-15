@@ -10,7 +10,7 @@ use AppBundle\Entity\User;
  */
 class UserDetailsAgentRepository extends EntityRepository
 {
-    public function getAgents(User $user, $queryOnly = false)
+    public function getAgentsQueryBuilder(User $user)
     {
         $qb = $this->createQueryBuilder('agent');
         
@@ -19,6 +19,13 @@ class UserDetailsAgentRepository extends EntityRepository
                 ->where('agent.manager = :manager')
                 ->setParameter('manager', $user);
         }
+        
+        return $qb;
+    }
+    
+    public function getAgents(User $user, $queryOnly = false)
+    {
+        $qb = $this->getAgentsQueryBuilder($user);
         
         if ($queryOnly) {
             return $qb->getQuery();

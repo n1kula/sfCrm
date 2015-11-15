@@ -100,5 +100,15 @@ abstract class UserDetails
     {
         return $this->lastName;
     }
+    
+    /**
+     * Full Name
+     * 
+     * @return string
+     */
+    public function getFullName()
+    {
+        return sprintf('%s %s', $this->getFirstName(), $this->getLastName());
+    }
 
 }
