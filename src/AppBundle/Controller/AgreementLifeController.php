@@ -16,7 +16,26 @@ use AppBundle\Entity\Attachment;
  */
 class AgreementLifeController extends Controller
 {
+    /**
+     * @Route("/list", name="agreememt_life_list")
+     * @Security("has_role('ROLE_USER')")
+     */
     public function listAction()
+    {
+        $agreements = $this->getDoctrine()
+            ->getRepository('AppBundle:AgreementLife')
+            ->findAll();
+        
+        return $this->render('agreementLife\list.html.twig', [
+            'agreements' => $agreements,
+        ]);
+    }
+    
+    /**
+     * @Route("/show/{slug}", name="agreememt_life_show")
+     * @Security("has_role('ROLE_USER')")
+     */
+    public function showAction()
     {
         
     }

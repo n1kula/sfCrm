@@ -1,6 +1,7 @@
 <?php namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\InheritanceType("SINGLE_TABLE")
@@ -33,6 +34,14 @@ abstract class Agreement
      * @ORM\Column(name="number", type="string", length=30)
      */
     private $number;
+    
+    /**
+     * @var string
+     * 
+     * @Gedmo\Slug(fields={"number"})
+     * @ORM\Column(name="slug", type="string", length=40, unique=true)
+     */
+    private $slug;
     
     /**
      * @var decimal
@@ -204,5 +213,15 @@ abstract class Agreement
     public function getAttachments()
     {
         return $this->attachments;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
