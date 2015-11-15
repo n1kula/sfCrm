@@ -19,7 +19,7 @@ class LoadUserAdminData extends AbstractFixture implements OrderedFixtureInterfa
         'username' => 'admin%d@sfcrm.dev',
         'password' => 'demo',
         'roles' => [
-            'ROLE_ADMIN',
+            'ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_AGENT',
         ],
     ];
     

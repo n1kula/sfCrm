@@ -24,7 +24,7 @@ class LoadUserManagerData extends AbstractFixture implements OrderedFixtureInter
         'username' => 'manager%d@sfcrm.dev',
         'password' => 'demo',
         'roles' => [
-            'ROLE_MANAGER',
+           'ROLE_MANAGER', 'ROLE_AGENT',
         ],
     ];
     
