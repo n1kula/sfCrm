@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+    <div class="box-body table-responsive no-padding">
+        <table class="table table-hover">
+            <tr>
+              <th>ID</th>
+              <th>Agent</th>
+              <th>Prowizja</th>
+            </tr>
+            
+            {% for agent in agents %}
+                <tr>
+                    <td>{{ agent.id }}</td>
+                    <td>{{ agent.firstName }} {{ agent.lastName }}</td>
+                    <td>{{ agent.commission }}</td>
+                </tr>                
+            {% endfor %}
+        </table>
+    </div>
+    
+{% endblock %}
