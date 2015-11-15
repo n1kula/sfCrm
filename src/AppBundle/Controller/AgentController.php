@@ -18,10 +18,17 @@ class AgentController extends Controller
     {
         $agents = $this->getDoctrine()->getManager()
             ->getRepository('AppBundle:UserDetailsAgent')
-            ->getAgents($this->getUser());
+            ->getAgents($this->getUser(), true);
+        
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $agents,
+            $request->query->getInt('page', 1)
+        );
+        
         
         return $this->render('agent/list.html.twig', [
-            'agents' => $agents,
+            'agents' => $pagination,
         ]);
     }
 }
