@@ -95,3 +95,27 @@ knp_paginator:
     page_range: 10
     template:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
+        
+oneup_flysystem:
+    adapters:
+        file_adapter:
+            local:
+                directory: %kernel.root_dir%/../web/uploads
+
+    filesystems:
+        file_fs:
+            adapter: file_adapter
+            mount:   file_fs
+            
+vich_uploader:
+    db_driver: orm
+    storage: flysystem
+
+    mappings:
+        file_map:
+            uri_prefix:         /uploads
+            upload_destination: file_fs
+            namer:              vich_uploader.namer_uniqid
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
