@@ -28,7 +28,17 @@ class User extends BaseUser
      * @ORM\OneToOne(targetEntity="UserDetails", cascade={"persist"})
      */
     protected $details;
+    
+    /**
+     * @ORM\Column(name="facebook_id", type="string", nullable=true)
+     */
+    protected $facebookId;
 
+    /**
+     * @ORM\Column(name="facebook_access_token", type="string", nullable=true)
+     */
+    protected $facebookAccessToken;
+    
     public function __construct()
     {
         parent::__construct();
@@ -68,5 +78,53 @@ class User extends BaseUser
     public function getDetails()
     {
         return $this->details;
+    }
+
+    /**
+     * Set facebookId
+     *
+     * @param string $facebookId
+     *
+     * @return User
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * Set facebookAccessToken
+     *
+     * @param string $facebookAccessToken
+     *
+     * @return User
+     */
+    public function setFacebookAccessToken($facebookAccessToken)
+    {
+        $this->facebookAccessToken = $facebookAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookAccessToken
+     *
+     * @return string
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebookAccessToken;
     }
 }

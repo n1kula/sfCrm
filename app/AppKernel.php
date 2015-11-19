@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Oneup\FlysystemBundle\OneupFlysystemBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

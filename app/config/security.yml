@@ -20,10 +20,18 @@ security:
 
             logout:       true
             anonymous:    true
+            
+            oauth:
+                resource_owners:
+                    facebook:           "/connect/login-facebook"
+                login_path:        /login
+                failure_path:      /login
+                oauth_user_provider:
+                    service: user.provider
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/(css|js), roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/(_wdt|_profiler), roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, role: ROLE_USER }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }

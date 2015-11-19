@@ -131,3 +131,14 @@ vich_uploader:
 knp_menu:
     twig:
         template: knp_menu.html.twig
+        
+hwi_oauth:
+    firewall_name: main
+    resource_owners:
+        facebook:
+            type: facebook
+            client_id: "client_id"
+            client_secret: "client_secret"
+            scope: "email"
+            options:
+                display: popup
