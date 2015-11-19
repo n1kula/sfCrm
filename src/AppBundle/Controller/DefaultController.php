@@ -18,4 +18,24 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
         ));
     }
+    
+    /**
+     * 
+     * @Route("/download/{filename}", name="file_download")
+     */
+    public function downloadFileAction($filename)
+    {
+        $filesystem = $this->get('dropbox_alias');
+        
+        $response = new \Symfony\Component\HttpFoundation\Response();
+        
+        $response->headers->set('Cache-Control', 'private');
+        $response->headers->set('Content-Disposition', 'attachment; filename="' . basename($filename) . '";');
+        
+        $response->send();
+        
+        $response->setContent($filesystem->read($filename));
+        
+        return $response;
+    }
 }

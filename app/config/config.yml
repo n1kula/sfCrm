@@ -101,11 +101,19 @@ oneup_flysystem:
         file_adapter:
             local:
                 directory: %kernel.root_dir%/../web/uploads
+        dropbox_adapter:
+            dropbox:
+                client: dropbox_client
+                prefix: ~
 
     filesystems:
         file_fs:
             adapter: file_adapter
             mount:   file_fs
+        dropbox_fs:
+            adapter: dropbox_adapter
+            alias: dropbox_alias
+            mount: dropbox_fs
 
 vich_uploader:
     db_driver: orm
@@ -114,7 +122,7 @@ vich_uploader:
     mappings:
         file_map:
             uri_prefix:         /uploads
-            upload_destination: file_fs
+            upload_destination: dropbox_fs
             namer:              vich_uploader.namer_uniqid
             inject_on_load:     false
             delete_on_update:   true
