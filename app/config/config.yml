@@ -145,3 +145,17 @@ hwi_oauth:
                 
 nelmio_api_doc: ~
 
+jms_serializer:
+    metadata:
+        auto_detection: true
+        
+fos_rest:
+    view:
+        formats:
+            json: true
+    routing_loader:
+        default_format: json
+    serializer:
+        serialize_null: true
+        
+

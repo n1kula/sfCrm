@@ -1,3 +1,8 @@
+api_client:
+    prefix: /api/v1
+    type:  rest
+    resource: AppBundle\Controller\API\ClientController
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
@@ -15,7 +20,7 @@ hwi_oauth_login:
     
 NelmioApiDocBundle:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
-    prefix:   /api/doc
+    prefix:   /api/v1/doc
        
 agreement_show:
     path:      /{slug}

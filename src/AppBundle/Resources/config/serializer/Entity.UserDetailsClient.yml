@@ -1,0 +1,6 @@
+AppBundle\Entity\UserDetailsClient:
+    exclusion_policy: ALL
+    properties:
+        pesel:
+            expose: true
+        
