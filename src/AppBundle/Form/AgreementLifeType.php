@@ -47,6 +47,11 @@ class AgreementLifeType extends AbstractType
             ->add('attachments', 'collection', [
                 'label' => 'Załącznik',
                 'type' => new AttachmentType(),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'prototype' => true,
+                'error_bubbling' => false,
             ])
         ;
         

@@ -47,8 +47,8 @@ class AgreementLifeController extends Controller
     public function addAction(Request $request)
     {
         $agreement = new AgreementLife();
-        $attachment = new Attachment();
-        $agreement->addAttachment($attachment);
+        //$attachment = new Attachment();
+        //$agreement->addAttachment($attachment);
         
         $user = $this->getUser();
         

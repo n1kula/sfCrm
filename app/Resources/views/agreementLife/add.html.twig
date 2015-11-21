@@ -6,5 +6,80 @@
     
         <button type="submit" class="btn btn-primary">Zapisz</button>
     
-    {{ form_end(form) }}
+        
+        <table class="striped attachments" data-prototype="{{ form_widget(form.attachments.vars.prototype)|e }}">
+                <tbody>
+                    {% for file in form.attachments %}
+                    
+                    <tr>
+                        <td width="95%"><a href="{# {{ path('file_download', {'filename': file.vars.value.fileName}) }} #}">{{ file.vars.value.realFileName }}</a></td>
+                        <td width="5%">{# <a href="{{ path('', {'fileId': file.vars.value.id}) }}" class="btn">usun</a> #}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">{{ form_errors(form.attachments) }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button type="button" class="btn uploader">Dodaj plik</button></td>
+                    </tr>
+                </tfoot>
+            </table>
+                
+        
+    {{ form_end(form) }}   
+    
+    
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+ 
+    <script type="text/javascript">
+        
+        function addUploader($collectionHolder) {
+            var prototype = $collectionHolder.data('prototype');
+            var index = $collectionHolder.data('index');
+            var newForm = prototype.replace(/__name__/g, index);
+            $collectionHolder.data('index', index + 1);
+            var $newForm = $('<tbody></tbody>').append(newForm);
+            var $file = $newForm.find('input[type="file"]');
+
+            $file.on('change', function(e) {
+                if ($file.val().length > 0) {
+                    $collectionHolder.append($newForm);
+                    var fileName = $file.val().replace(/C:\\fakepath\\/i, '');
+
+                    $collectionHolder.append('<tr><td width="95%">'+fileName+'</td>' +
+                            '<td width="5%"><a href="javascript:void(0);" class="delete-attachment">usun</a></td>' +
+                            '</tr>');
+                }
+            });
+
+            $file.click().hide();
+        }
+
+        $(function () {
+
+            // uploader
+            var $collectionHolder;
+            $collectionHolder = $('table.attachments');
+            $collectionHolder.data('index', 0);
+
+            $(document).on('click', '.uploader', function(e) {
+                e.preventDefault();
+
+                addUploader($collectionHolder, $(this));
+            });
+
+            $(document.body).on('click', '.delete-attachment', function(e) {
+                e.preventDefault();
+                $(this).parent().remove();
+            });
+        });
+
+        
+    </script>
+    
 {% endblock %}

@@ -124,7 +124,7 @@ vich_uploader:
     mappings:
         file_map:
             uri_prefix:         /uploads
-            upload_destination: dropbox_fs
+            upload_destination: file_fs
             namer:              vich_uploader.namer_uniqid
             inject_on_load:     false
             delete_on_update:   true
