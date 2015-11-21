@@ -8,6 +8,7 @@ use FOS\RestBundle\Routing\ClassResourceInterface;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\User;
 use FOS\RestBundle\Controller\Annotations\Post;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Class AuthController
@@ -48,7 +49,9 @@ class AuthController extends FOSRestController implements ClassResourceInterface
         $user = $qb->getQuery()->getOneOrNullResult();
         
         if (!$user) {
-            throw new \Exception('No user found', 400);
+            return new JsonResponse([
+                'message' => 'Wrong credentials',
+            ], 400);
         }
         
         $factory = $this->get('security.encoder_factory');
@@ -57,7 +60,9 @@ class AuthController extends FOSRestController implements ClassResourceInterface
         $valid = $encoder->isPasswordValid($user->getPassword(), $password, $user->getSalt());
         
         if (!$valid) {
-            throw new \Exception('Wrong credentials', 400);
+            return new JsonResponse([
+                'message' => 'Wrong credentials',
+            ], 400);
         }
         
         $apiKey = md5(microtime().rand());

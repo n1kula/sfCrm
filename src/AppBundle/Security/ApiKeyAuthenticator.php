@@ -3,7 +3,7 @@
 namespace AppBundle\Security;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Authentication\SimplePreAuthenticatorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\PreAuthenticatedToken;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -71,6 +71,8 @@ class ApiKeyAuthenticator implements SimplePreAuthenticatorInterface, Authentica
     
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        return new Response("Authentication Failed.", 403);
+        return new JsonResponse([
+            'message' => 'Authentication Failed.',
+        ], 403);
     }
 }
