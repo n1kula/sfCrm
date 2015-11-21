@@ -50,6 +50,12 @@ class MainMenu extends ContainerAware
             ]);
         }
         
+        if ($this->container->get('security.authorization_checker')->isGranted('ROLE_AGENT')) {
+            
+            $menu->addChild('Dodaj klienta', [
+                'route' => 'client_add',
+            ]);
+        }
         
         
         return $menu;
