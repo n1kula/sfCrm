@@ -25,7 +25,7 @@ class User extends BaseUser
     /**
      * @var UserDetails
      * 
-     * @ORM\OneToOne(targetEntity="UserDetails", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="UserDetails", mappedBy="user", cascade={"persist"})
      */
     protected $details;
     

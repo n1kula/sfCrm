@@ -49,6 +49,13 @@ abstract class UserDetails
      * @ORM\OneToMany(targetEntity="Alert", mappedBy="user")
      */
     protected $alerts;
+    
+    /**
+     * @var User
+     * 
+     * @ORM\OneToOne(targetEntity="User", inversedBy="details")
+     */
+    private $user;
 
     /**
      * Get id
@@ -152,4 +159,35 @@ abstract class UserDetails
         return $this->alerts;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->alerts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return UserDetails
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }
