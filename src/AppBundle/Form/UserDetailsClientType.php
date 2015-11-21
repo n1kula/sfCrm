@@ -17,7 +17,7 @@ class UserDetailsClientType extends AbstractType
     {
         $builder
             ->add('firstName', 'text', [
-                'label' => 'Imię',
+                'label' => 'client.firstName',
             ])
             ->add('lastName', 'text', [
                 'label' => 'Nazwisko',
