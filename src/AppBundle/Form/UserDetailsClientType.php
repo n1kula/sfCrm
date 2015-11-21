@@ -28,7 +28,7 @@ class UserDetailsClientType extends AbstractType
                     new Pesel(),
                 ]
             ])
-        ;
+        ;        
     }
     
     /**
