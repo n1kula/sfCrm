@@ -53,10 +53,13 @@ class PeselValidator extends ConstraintValidator
 
 
         if (!$valid) {
-            $this->context->buildViolation($constraint->message)
-                ->setParameter('pesel', $value)
-                ->addViolation()
-            ;
+            
+            $this->context->addViolation($constraint->message);
+            
+//            $this->context->buildViolation($constraint->message)
+//                ->setParameter('pesel', $value)
+//                ->addViolation()
+//            ;
         }
     }
 }
