@@ -39,11 +39,7 @@ class User extends BaseUser
      */
     protected $facebookAccessToken;
     
-    /**
-     *
-     * @ORM\OneToMany(targetEntity="Alert", mappedBy="user")
-     */
-    protected $alerts;
+    
     
     public function __construct()
     {
@@ -132,39 +128,5 @@ class User extends BaseUser
     public function getFacebookAccessToken()
     {
         return $this->facebookAccessToken;
-    }
-
-    /**
-     * Add alert
-     *
-     * @param \AppBundle\Entity\Alert $alert
-     *
-     * @return User
-     */
-    public function addAlert(\AppBundle\Entity\Alert $alert)
-    {
-        $this->alerts[] = $alert;
-
-        return $this;
-    }
-
-    /**
-     * Remove alert
-     *
-     * @param \AppBundle\Entity\Alert $alert
-     */
-    public function removeAlert(\AppBundle\Entity\Alert $alert)
-    {
-        $this->alerts->removeElement($alert);
-    }
-
-    /**
-     * Get alerts
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAlerts()
-    {
-        return $this->alerts;
     }
 }

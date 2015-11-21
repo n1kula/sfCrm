@@ -42,6 +42,13 @@ abstract class UserDetails
      * @ORM\Column(name="last_name", type="string", length=100)
      */
     private $lastName;
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     * 
+     * @ORM\OneToMany(targetEntity="Alert", mappedBy="user")
+     */
+    protected $alerts;
 
     /**
      * Get id
@@ -109,6 +116,40 @@ abstract class UserDetails
     public function getFullName()
     {
         return sprintf('%s %s', $this->getFirstName(), $this->getLastName());
+    }
+    
+    /**
+     * Add alert
+     *
+     * @param \AppBundle\Entity\Alert $alert
+     *
+     * @return UserDetails
+     */
+    public function addAlert(\AppBundle\Entity\Alert $alert)
+    {
+        $this->alerts[] = $alert;
+
+        return $this;
+    }
+
+    /**
+     * Remove alert
+     *
+     * @param \AppBundle\Entity\Alert $alert
+     */
+    public function removeAlert(\AppBundle\Entity\Alert $alert)
+    {
+        $this->alerts->removeElement($alert);
+    }
+
+    /**
+     * Get alerts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAlerts()
+    {
+        return $this->alerts;
     }
 
 }
