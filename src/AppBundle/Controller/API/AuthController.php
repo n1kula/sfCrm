@@ -4,21 +4,16 @@ namespace AppBundle\Controller\API;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use FOS\RestBundle\Routing\ClassResourceInterface;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\User;
-use FOS\RestBundle\Controller\Annotations\Post;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Class AuthController
  */
-class AuthController extends FOSRestController implements ClassResourceInterface
-{
-    
+class AuthController extends FOSRestController
+{    
     /**
-     * @Post("/login")
-     * 
      * @ApiDoc(
      *  section="Auth",
      *  resource = true,
