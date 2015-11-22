@@ -1,0 +1,17 @@
+{
+  "name": "sfCrm",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "license": "NLPL",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-changed": "^1.3.0",
+    "gulp-concat": "^2.3.3",
+    "gulp-less": "^3.0.3",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-uglify": "^1.4.1"
+  },
+  "engines": {
+    "node": ">=0.10"
+  }
+}
