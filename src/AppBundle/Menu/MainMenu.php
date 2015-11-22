@@ -19,10 +19,13 @@ class MainMenu extends ContainerAware
     
     public function menu(FactoryInterface $factory, array $options)
     {
+        $trans = $this->container->get('translator');
+        
         $menu = $factory->createItem('root');
 
-        $menu->addChild('Panel', [
+        $menu->addChild('panel', [
             'route' => 'homepage',
+            'label' => $trans->trans('panel'),
         ]);
 
         $menu->addChild('agreement_list', [
